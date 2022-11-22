@@ -1,7 +1,8 @@
 #MicroXplorer Configuration settings - do not modify
 ADC1.Channel-0\#ChannelRegularConversion=ADC_CHANNEL_1
 ADC1.DMAContinuousRequests=ENABLE
-ADC1.IPParameters=Rank-0\#ChannelRegularConversion,master,Channel-0\#ChannelRegularConversion,SamplingTime-0\#ChannelRegularConversion,NbrOfConversionFlag,DMAContinuousRequests
+ADC1.ExternalTrigConv=ADC_EXTERNALTRIGCONV_T3_TRGO
+ADC1.IPParameters=Rank-0\#ChannelRegularConversion,master,Channel-0\#ChannelRegularConversion,SamplingTime-0\#ChannelRegularConversion,NbrOfConversionFlag,DMAContinuousRequests,ExternalTrigConv
 ADC1.NbrOfConversionFlag=1
 ADC1.Rank-0\#ChannelRegularConversion=1
 ADC1.SamplingTime-0\#ChannelRegularConversion=ADC_SAMPLETIME_3CYCLES
@@ -395,9 +396,10 @@ SPI1.IPParameters=CalculateBaudRate-Full_Duplex_Master,BaudRatePrescaler-Full_Du
 SPI1.Mode=SPI_MODE_MASTER
 SPI1.Mode-Full_Duplex_Master=SPI_MODE_MASTER
 SPI1.VirtualType=VM_MASTER
-TIM3.IPParameters=Prescaler,Period
+TIM3.IPParameters=Prescaler,Period,TIM_MasterOutputTrigger
 TIM3.Period=4
 TIM3.Prescaler=20
+TIM3.TIM_MasterOutputTrigger=TIM_TRGO_UPDATE
 USB_HOST.BSP.number=1
 USB_HOST.IPParameters=VirtualModeFS,USBH_HandleTypeDef-CDC_FS
 USB_HOST.USBH_HandleTypeDef-CDC_FS=hUsbHostFS

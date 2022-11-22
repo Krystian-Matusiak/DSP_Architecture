@@ -62,11 +62,25 @@ void MX_USB_HOST_Process(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-#define BUFFER_SIZE 1600
+#define BUFFER_SIZE 16
 #define SIZE_AFTER_OVERS 100
-int32_t Buffer[BUFFER_SIZE];
+int16_t Buffer[BUFFER_SIZE];
 int32_t Buffer_oversampled[SIZE_AFTER_OVERS];
 uint16_t index = 0;
+
+void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)
+{
+	int32_t sum = 0;
+	for(int overs_index = 0 ; overs_index<BUFFER_SIZE ; overs_index++)
+	{
+		sum += Buffer[overs_index];
+	}
+	Buffer_oversampled[index] = sum / 16;
+	index++;
+	if(index == SIZE_AFTER_OVERS)
+		index = 0;
+}
+
 /* USER CODE END 0 */
 
 /**
@@ -110,7 +124,7 @@ int main(void)
 	  Buffer[i] = 0;
   }
 
-  HAL_ADC_Start_DMA(&hadc1, (uint32_t)Buffer, BUFFER_SIZE);
+  HAL_ADC_Start_DMA(&hadc1, (uint32_t*)Buffer, BUFFER_SIZE);
   HAL_TIM_Base_Start(&htim3) ;
 
   /* USER CODE END 2 */
@@ -119,15 +133,7 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-	for(int overs_index = 0 ; overs_index<SIZE_AFTER_OVERS ; overs_index++)
-	{
-		int sum = 0;
-		for(int sample = 0 ; sample < 16 ; sample++)
-		{
-			 sum += Buffer[overs_index*16 + sample];
-		}
-		Buffer_oversampled[overs_index] = sum/16;
-	}
+
 
     /* USER CODE END WHILE */
 //    MX_USB_HOST_Process();

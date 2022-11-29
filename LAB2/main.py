@@ -23,6 +23,8 @@ def plot_data(X, Y, xlabel, ylabel, title):
     plot_index = plot_index + 1
 
 def calculate_fft(N, T, Y, title):
+    global plot_index
+    plt.figure(plot_index+10)
     yf = fft(Y)
     print(f"N = {N}")
     print(f"T = {T}")
@@ -32,7 +34,7 @@ def calculate_fft(N, T, Y, title):
     plt.title(title)
     plt.xlabel("f [Hz]")
     plt.ylabel("Mag of FFT")
-    plt.show()
+    plot_index = plot_index + 1
 
 plot_index = 1
 if __name__ == "__main__":
@@ -54,15 +56,16 @@ if __name__ == "__main__":
     y_10 = df['ADC_10kHz'].to_numpy()
     y_40 = df['ADC_40kHz'].to_numpy()
 
-    plot_data(t_1, y_1, "Time [ms]", "Voltage [V]", "ADC for 1kHz")
-    plot_data(t_10, y_10, "Time [ms]", "Voltage [V]", "ADC for 10kHz")
-    plot_data(t_40, y_40, "Time [ms]", "Voltage [V]", "ADC for 40kHz")
-    plt.show()
+    # plot_data(t_1, y_1, "Time [ms]", "Voltage [V]", "ADC for 1kHz")
+    # plot_data(t_10, y_10, "Time [ms]", "Voltage [V]", "ADC for 10kHz")
+    # plot_data(t_40, y_40, "Time [ms]", "Voltage [V]", "ADC for 40kHz")
+    # plt.show()
 
     calculate_fft(N, Tp, y_1, "FFT for 1kHz")
     calculate_fft(N, Tp, y_10, "FFT for 10kHz")
     calculate_fft(N, Tp, y_40, "FFT for 40kHz")
-    
+    plt.show()
+
     # ------------------------------------------------------------------------
     # With DMA
     N_dma = 300
@@ -79,8 +82,9 @@ if __name__ == "__main__":
     plot_data(dma_t_1, dma_y_1, "Time [ms]", "Voltage [V]", "ADC for 1kHz")
     plot_data(dma_t_10, dma_y_10, "Time [ms]", "Voltage [V]", "ADC for 10kHz")
     plot_data(dma_t_40, dma_y_40, "Time [ms]", "Voltage [V]", "ADC for 40kHz")
-    plt.show()
+    # plt.show()
 
     calculate_fft(N_dma, Tp, dma_y_1, "FFT for 1kHz")
     calculate_fft(N_dma, Tp, dma_y_10, "FFT for 10kHz")
     calculate_fft(N_dma, Tp, dma_y_40, "FFT for 40kHz")
+    plt.show()

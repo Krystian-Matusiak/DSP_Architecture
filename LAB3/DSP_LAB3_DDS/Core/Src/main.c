@@ -185,9 +185,33 @@ uint16_t LookUpTable[BUFFER_SIZE]={32768,32969,33170,33371,33572,33773,33974,341
 		29556,29756,29956,30157,30357,30558,30758,30959,
 		31160,31361,31561,31762,31963,32164,32365,32566};
 
+#define SINC_SIZE 30
+float sinc_filter2[5] = {0.0164, -0.0872, 1.1451, -0.0872, 0.0164};
+float sinc_filter[SINC_SIZE] = {0.02858996	,-0.2882736353,	1.37873178	,-4.371167	,10.410830	,-19.772149,	30.835510	,-39.8808188193933	,42.3805650034814	,-35.5099849111853	,20.4618867854941	,-2.78351541242456,	-10.0328557339933,	12.6402634594376	,-4.99761264873367,	-4.99761264873367,	12.6402634594376,	-10.0328557339933	,-2.78351541242456	,20.4618867854941	,-35.5099849111853	,42.3805650034814	,-39.8808188193933,	30.8355109291665	,-19.7721496683524	,10.4108304797833	,-4.37116777300815,	1.37873178176519,	-0.288273635345146,	0.0285899666009171};
+float historic_vector[SINC_SIZE-1] = {0, 0, 0, 0};
+float DACArray[BUFFER_SIZE];
+int DAC_index = 0;
 
 float phaseStep = 0;
 #define F_SAMPLE 100000
+
+float sinc_filter_conv()
+{
+	float sum = DACArray[DAC_index]*sinc_filter[0];
+	for (int i=0; i<SINC_SIZE-1 ; i++)
+	{
+		sum += historic_vector[i]*sinc_filter[i+1];
+	}
+	return sum;
+}
+
+void update_historical()
+{
+	for (int i = SINC_SIZE-2 ; i>0 ; i--)
+	{
+		historic_vector[i] = historic_vector[i-1];
+	}
+}
 
 void DDS(uint16_t freq)
 {
@@ -199,12 +223,25 @@ void DDS(uint16_t freq)
 	{
 		phaseAcc -= BUFFER_SIZE;
 	}
-    HAL_DAC_SetValue(&hdac, DAC_CHANNEL_2, DAC_ALIGN_12B_L, LookUpTable[(int)phaseAcc]);
+    DACArray[DAC_index] = (float)LookUpTable[(int)phaseAcc];
+
+    update_historical();
+    historic_vector[0] = DACArray[DAC_index];
+    float filtered = sinc_filter_conv();
+    HAL_DAC_SetValue(&hdac, DAC_CHANNEL_2, DAC_ALIGN_12B_L, filtered*0.98f);
+    HAL_DAC_SetValue(&hdac, DAC_CHANNEL_1, DAC_ALIGN_12B_L, LookUpTable[(int)phaseAcc]*0.98f);
+
+
+    DAC_index++;
+    if(DAC_index == BUFFER_SIZE)
+    {
+    	DAC_index=0;
+    }
 }
 
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef* htim)
 {
-	DDS(30000);
+	DDS(2000);
 }
 
 /* USER CODE END 0 */
@@ -242,6 +279,11 @@ int main(void)
   /* USER CODE BEGIN 2 */
   HAL_TIM_Base_Start_IT(&htim2) ;
   HAL_DAC_Start(&hdac, DAC_CHANNEL_2);
+  HAL_DAC_Start(&hdac, DAC_CHANNEL_1);
+  for (int i=0 ; i<BUFFER_SIZE ; i++)
+  {
+	  DACArray[i] = 0;
+  }
 
   /* USER CODE END 2 */
 

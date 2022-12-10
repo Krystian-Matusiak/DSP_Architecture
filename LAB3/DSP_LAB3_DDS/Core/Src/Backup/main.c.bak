@@ -19,7 +19,6 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "dac.h"
-#include "dma.h"
 #include "tim.h"
 #include "gpio.h"
 
@@ -186,6 +185,64 @@ uint16_t LookUpTable[BUFFER_SIZE]={32768,32969,33170,33371,33572,33773,33974,341
 		29556,29756,29956,30157,30357,30558,30758,30959,
 		31160,31361,31561,31762,31963,32164,32365,32566};
 
+#define SINC_SIZE 5
+float sinc_filter[SINC_SIZE] = {0.0164, -0.0872, 1.1451, -0.0872, 0.0164};
+float DACArray[BUFFER_SIZE];
+int DAC_index=0;
+
+
+float phaseStep = 0;
+#define F_SAMPLE 100000
+
+
+float sinc_filter_conv()
+{
+	float sum = 0;
+	for (int i=0; i<SINC_SIZE ; i++)
+	{
+		if(DAC_index-i >= 0)
+		{
+			sum += DACArray[DAC_index-i]*sinc_filter[i];
+		}
+		else
+		{
+			sum += DACArray[BUFFER_SIZE-i]*sinc_filter[i];
+		}
+	}
+
+	return sum;
+}
+
+void DDS(uint16_t freq)
+{
+	phaseStep = BUFFER_SIZE*freq/F_SAMPLE;
+
+	static float phaseAcc;
+	phaseAcc += phaseStep;
+	if(phaseAcc >= BUFFER_SIZE)
+	{
+		phaseAcc -= BUFFER_SIZE;
+	}
+    DACArray[DAC_index] = (float)LookUpTable[(int)phaseAcc];
+
+    float filtered = sinc_filter_conv();
+//    DACArray[DAC_index] = filtered;
+    HAL_DAC_SetValue(&hdac, DAC_CHANNEL_2, DAC_ALIGN_12B_L, filtered);
+//    HAL_DAC_SetValue(&hdac, DAC_CHANNEL_2, DAC_ALIGN_12B_L, LookUpTable[(int)phaseAcc]);
+
+
+    DAC_index++;
+    if(DAC_index == BUFFER_SIZE)
+    {
+    	DAC_index=0;
+    }
+}
+
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef* htim)
+{
+	DDS(1000);
+}
+
 /* USER CODE END 0 */
 
 /**
@@ -216,12 +273,15 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
-  MX_DMA_Init();
   MX_DAC_Init();
   MX_TIM2_Init();
   /* USER CODE BEGIN 2 */
-  HAL_TIM_Base_Start(&htim2) ;
-  HAL_DAC_Start_DMA(&hdac, DAC_CHANNEL_2, (uint32_t*)LookUpTable, BUFFER_SIZE, DAC_ALIGN_12B_L);
+  HAL_TIM_Base_Start_IT(&htim2) ;
+  HAL_DAC_Start(&hdac, DAC_CHANNEL_2);
+  for (int i=0 ; i<BUFFER_SIZE ; i++)
+  {
+	  DACArray[i] = 0;
+  }
 
   /* USER CODE END 2 */
 

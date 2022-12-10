@@ -36,6 +36,11 @@ def calculate_fft(N, T, Y, title):
     plt.ylabel("Mag of FFT")
     plot_index = plot_index + 1
 
+    max_point = np.max(np.abs(yf[:N//2]))
+    min_point = np.min(np.abs(yf[:N//2]))
+    SINAD = max_point - min_point
+    return SINAD
+
 plot_index = 1
 if __name__ == "__main__":
     df = pd.read_excel('sines.ods', engine='odf')
@@ -61,30 +66,35 @@ if __name__ == "__main__":
     # plot_data(t_40, y_40, "Time [ms]", "Voltage [V]", "ADC for 40kHz")
     # plt.show()
 
-    calculate_fft(N, Tp, y_1, "FFT for 1kHz")
-    calculate_fft(N, Tp, y_10, "FFT for 10kHz")
-    calculate_fft(N, Tp, y_40, "FFT for 40kHz")
+    sinad_adc_1 = calculate_fft(N, Tp, y_1, "FFT for 1kHz")
+    sinad_adc_10 = calculate_fft(N, Tp, y_10, "FFT for 10kHz")
+    sinad_adc_40 = calculate_fft(N, Tp, y_40, "FFT for 40kHz")
+    
+    print(f"sinad_adc_1 = {sinad_adc_1}")
+    print(f"sinad_adc_10 = {sinad_adc_10}")
+    print(f"sinad_adc_40 = {sinad_adc_40}")
+    
     plt.show()
 
-    # ------------------------------------------------------------------------
-    # With DMA
-    N_dma = 300
-    fp = 50000
-    Tp = 1/fp
-    dma_t_1 = df['DMA_sample_id'].to_numpy()[0:N_dma]
-    dma_t_10 = df['DMA_sample_id'].to_numpy()[0:N_dma]
-    dma_t_40 = df['DMA_sample_id'].to_numpy()[0:N_dma]
+    # # ------------------------------------------------------------------------
+    # # With DMA
+    # N_dma = 300
+    # fp = 50000
+    # Tp = 1/fp
+    # dma_t_1 = df['DMA_sample_id'].to_numpy()[0:N_dma]
+    # dma_t_10 = df['DMA_sample_id'].to_numpy()[0:N_dma]
+    # dma_t_40 = df['DMA_sample_id'].to_numpy()[0:N_dma]
 
-    dma_y_1 = df['DMA_1kHz'].to_numpy()[0:N_dma]
-    dma_y_10 = df['DMA_10kHz'].to_numpy()[0:N_dma]
-    dma_y_40 = df['DMA_40kHz'].to_numpy()[0:N_dma]
+    # dma_y_1 = df['DMA_1kHz'].to_numpy()[0:N_dma]
+    # dma_y_10 = df['DMA_10kHz'].to_numpy()[0:N_dma]
+    # dma_y_40 = df['DMA_40kHz'].to_numpy()[0:N_dma]
 
-    plot_data(dma_t_1, dma_y_1, "Time [ms]", "Voltage [V]", "ADC for 1kHz")
-    plot_data(dma_t_10, dma_y_10, "Time [ms]", "Voltage [V]", "ADC for 10kHz")
-    plot_data(dma_t_40, dma_y_40, "Time [ms]", "Voltage [V]", "ADC for 40kHz")
+    # plot_data(dma_t_1, dma_y_1, "Time [ms]", "Voltage [V]", "ADC for 1kHz")
+    # plot_data(dma_t_10, dma_y_10, "Time [ms]", "Voltage [V]", "ADC for 10kHz")
+    # plot_data(dma_t_40, dma_y_40, "Time [ms]", "Voltage [V]", "ADC for 40kHz")
+    # # plt.show()
+
+    # calculate_fft(N_dma, Tp, dma_y_1, "FFT for 1kHz")
+    # calculate_fft(N_dma, Tp, dma_y_10, "FFT for 10kHz")
+    # calculate_fft(N_dma, Tp, dma_y_40, "FFT for 40kHz")
     # plt.show()
-
-    calculate_fft(N_dma, Tp, dma_y_1, "FFT for 1kHz")
-    calculate_fft(N_dma, Tp, dma_y_10, "FFT for 10kHz")
-    calculate_fft(N_dma, Tp, dma_y_40, "FFT for 40kHz")
-    plt.show()

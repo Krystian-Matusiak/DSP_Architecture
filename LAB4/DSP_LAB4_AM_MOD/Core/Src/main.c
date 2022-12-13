@@ -192,6 +192,7 @@ uint16_t LookUpTable[BUFFER_SIZE]={32768,32969,33170,33371,33572,33773,33974,341
 float phaseStep = 0;
 #define F_SAMPLE 100000
 #define MAX_ADC_VALUE 4096
+#define OFFSET 32768
 
 float GetADCFactor(uint32_t adc_v)
 {
@@ -208,8 +209,9 @@ void DDS(uint16_t freq)
 	{
 		phaseAcc -= BUFFER_SIZE;
 	}
-
-	uint16_t am_modulated = (float)LookUpTable[(int)phaseAcc] * GetADCFactor(HAL_ADC_GetValue(&hadc1));
+	float adc = GetADCFactor(HAL_ADC_GetValue(&hadc1));
+	float LUT = (float)LookUpTable[(int)phaseAcc] - OFFSET;
+	uint16_t am_modulated = LUT * adc + OFFSET;
     HAL_DAC_SetValue(&hdac, DAC_CHANNEL_2, DAC_ALIGN_12B_L, am_modulated);
     HAL_DAC_SetValue(&hdac, DAC_CHANNEL_1, DAC_ALIGN_12B_L, LookUpTable[(int)phaseAcc]);
 }

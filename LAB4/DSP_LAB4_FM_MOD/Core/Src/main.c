@@ -191,33 +191,42 @@ uint16_t LookUpTable[BUFFER_SIZE]={32768,32969,33170,33371,33572,33773,33974,341
 
 
 float phaseStep = 0;
+float phaseStepFM = 0;
 #define F_SAMPLE 100000
 #define MAX_ADC_VALUE 4096
+#define OFFSET 32768
 
 float GetADCFactor(uint32_t adc_v)
 {
-	return (float)adc_v/MAX_ADC_VALUE;
+	return 20*(float)adc_v/MAX_ADC_VALUE + 1;
 }
 
 void DDS(uint16_t freq)
 {
-	phaseStep = BUFFER_SIZE*freq/F_SAMPLE;
+	float modulated_freq = (float)freq * GetADCFactor(HAL_ADC_GetValue(&hadc1));
+	phaseStep = freq * BUFFER_SIZE/F_SAMPLE;
+	phaseStepFM = modulated_freq * BUFFER_SIZE/F_SAMPLE;
 
 	static float phaseAcc;
+	static float phaseAccFM;
 	phaseAcc += phaseStep;
+	phaseAccFM += phaseStepFM;
 	if(phaseAcc >= BUFFER_SIZE)
 	{
 		phaseAcc -= BUFFER_SIZE;
 	}
+	if(phaseAccFM >= BUFFER_SIZE)
+	{
+		phaseAccFM -= BUFFER_SIZE;
+	}
 
-	uint16_t fm_modulated = (float)LookUpTable[(int)phaseAcc] * GetADCFactor(HAL_ADC_GetValue(&hadc1));
-    HAL_DAC_SetValue(&hdac, DAC_CHANNEL_2, DAC_ALIGN_12B_L, fm_modulated);
+    HAL_DAC_SetValue(&hdac, DAC_CHANNEL_2, DAC_ALIGN_12B_L, LookUpTable[(int)phaseAccFM]);
     HAL_DAC_SetValue(&hdac, DAC_CHANNEL_1, DAC_ALIGN_12B_L, LookUpTable[(int)phaseAcc]);
 }
 
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef* htim)
 {
-	DDS(5000);
+	DDS(1000);
 }
 
 /* USER CODE END 0 */

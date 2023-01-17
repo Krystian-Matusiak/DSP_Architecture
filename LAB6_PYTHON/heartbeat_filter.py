@@ -1,9 +1,10 @@
 import sys
 from scipy.io import wavfile
 from scipy.fft import fft, ifft, fftfreq
+from scipy.signal import blackman
+import scipy as sp
 import numpy as np
 import matplotlib.pyplot as plt
-from scipy.signal import blackman
 import heartpy as hp
 
 
@@ -63,7 +64,7 @@ if __name__ == "__main__":
     plot_signal(x_fft, 2.0/N * np.abs(y_fft[:N_fft]),"Frequency [Hz]","Amplitude", "Frequency-domain heartbeat signal after filter")
     # plt.show()
 
-    y_filtered = ifft(y_fft)
+    y_filtered = ifft(y_fft,axis=0)
 
     print(f"y_filtered = {y_filtered}")    
     print(f"y_filtered.size = {y_filtered.size}")    
@@ -84,4 +85,13 @@ if __name__ == "__main__":
     # HearthPy process after filtration
     a ,b = hp.process(y_filtered, f, report_time=True)
     hp.plotter(a,b)
-    plt.show()
+    # plt.show()
+
+
+    y_filtered = sp.real(y_filtered)
+    y_filtered2 = sp.int16(y_filtered / sp.absolute(y_filtered).max() * 32767)
+    y_filtered3 = sp.int16(y_filtered)
+
+    wavfile.write("filtered_signal_float.wav", f//2, y_filtered)
+    wavfile.write("filtered_signal_int16_scaled.wav", f//2, y_filtered2)
+    wavfile.write("filtered_signal_int16.wav", f//2, y_filtered3)

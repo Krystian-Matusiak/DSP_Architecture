@@ -4,9 +4,16 @@ from scipy.fft import fft, ifft, fftfreq
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.signal import blackman
+import heartpy as hp
 
 
-
+def plot_signal(X, Y, xlabel, ylabel, title):
+    plt.figure()
+    plt.plot(X, Y)
+    plt.grid()
+    plt.xlabel(xlabel)
+    plt.ylabel(ylabel)
+    plt.title(title)
 
 if __name__ == "__main__":
     total = len(sys.argv)
@@ -26,12 +33,7 @@ if __name__ == "__main__":
 
     # -----------------------------------------------------
     # Plot time-domain
-    plt.figure()
-    plt.plot(t, y_signal)
-    plt.grid()
-    plt.xlabel("time [s]")
-    plt.ylabel("Amplitude")
-    plt.title("Time-domain heartbeat signal")
+    plot_signal(t, y_signal,"Time [s]","Amplitude", "Time-domain heartbeat signal")
     # plt.show()
 
     y_fft = fft(y_signal)
@@ -40,12 +42,7 @@ if __name__ == "__main__":
 
     # -----------------------------------------------------
     # Plot frequency-domain
-    plt.figure()
-    plt.plot(x_fft, 2.0/N * np.abs(y_fft[:N_fft]), '-b')
-    plt.grid()
-    plt.xlabel("frequency [Hz]")
-    plt.ylabel("Amplitude")
-    plt.title("Frequency-domain heartbeat signal")
+    plot_signal(x_fft, 2.0/N * np.abs(y_fft[:N_fft]),"Frequency [Hz]","Amplitude", "Frequency-domain heartbeat signal")
     # plt.show()
 
     # -----------------------------------------------------
@@ -62,13 +59,8 @@ if __name__ == "__main__":
 
 
     # -----------------------------------------------------
-    # Plot frequency-domain after filtr
-    plt.figure()
-    plt.plot(x_fft, 2.0/N * np.abs(y_fft[:N_fft]), '-b')
-    plt.grid()
-    plt.xlabel("frequency [Hz]")
-    plt.ylabel("Amplitude")
-    plt.title("Frequency-domain heartbeat signal after filter")
+    # Plot frequency-domain after filtration
+    plot_signal(x_fft, 2.0/N * np.abs(y_fft[:N_fft]),"Frequency [Hz]","Amplitude", "Frequency-domain heartbeat signal after filter")
     # plt.show()
 
     y_filtered = ifft(y_fft)
@@ -78,11 +70,18 @@ if __name__ == "__main__":
     print(f"t.size = {t.size}")    
 
     # -----------------------------------------------------
-    # Plot time-domain after filter
-    plt.figure()
-    plt.plot(t[:t.size//2], y_filtered)
-    plt.grid()
-    plt.xlabel("time [s]")
-    plt.ylabel("Amplitude")
-    plt.title("Time-domain heartbeat signal after filter")
+    # Plot time-domain after filtration
+    plot_signal(t[:t.size//2], y_filtered,"Time [s]","Amplitude", "Time-domain heartbeat signal after filter")
+    # plt.show()
+
+    # -----------------------------------------------------
+    # HearthPy process for unfiltered
+    a ,b = hp.process(y_signal, f, report_time=True)
+    hp.plotter(a,b)
+    # plt.show()
+
+    # -----------------------------------------------------
+    # HearthPy process after filtration
+    a ,b = hp.process(y_filtered, f, report_time=True)
+    hp.plotter(a,b)
     plt.show()

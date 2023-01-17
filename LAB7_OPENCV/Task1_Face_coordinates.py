@@ -27,6 +27,12 @@ if __name__ == "__main__":
         # Draw the rectangle around each face
         for (x, y, w, h) in faces:
             cv2.rectangle(img, (x, y), (x+w, y+h), (255, 0, 0), 2)
+
+            fontSize = 0.7
+            font = cv2.FONT_HERSHEY_SIMPLEX
+            (_,offset),_ = cv2.getTextSize(text=str("test"), fontFace=font, fontScale=fontSize, thickness=1)
+            cv2.putText(img, f"X range:{x}-{x+w}", (x,y-offset), font, fontSize, (250, 255, 250), 2, cv2.LINE_AA)
+            cv2.putText(img, f"Y range:{y}-{y+h}", (x,y), font, fontSize, (250, 255, 250), 2, cv2.LINE_AA)
         # Display
         cv2.imshow('img', img)
         # Stop if escape key is pressed

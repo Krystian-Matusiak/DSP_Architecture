@@ -20,15 +20,10 @@ if __name__ == "__main__":
     total = len(sys.argv)
     cmdargs = str(sys.argv)
 
-    print(f"The total numbers of args passed to the script: {total}")
-    print(f"Arg list: {cmdargs}")
-
-    print(f"Script name: {str(sys.argv[0])}")
-    print(f"First argument: {str(sys.argv[1])}")
 
     f, y_signal = wavfile.read('./hearth_signal.wav')
     T = 1.0/f
-    N = y_signal.size
+    N = len(y_signal)
     N_fft = N//2
     t = np.linspace(0,N*T,N)
 
@@ -48,6 +43,8 @@ if __name__ == "__main__":
 
     # -----------------------------------------------------
     # Bandpass
+    # f_1 = 1.5
+    # f_2 = 2.3
     f_1 = 120
     f_2 = 220
     deltaF1 = x_fft[-1] / N_fft
@@ -83,15 +80,21 @@ if __name__ == "__main__":
 
     # -----------------------------------------------------
     # HearthPy process after filtration
-    a ,b = hp.process(y_filtered, f, report_time=True)
-    hp.plotter(a,b)
-    # plt.show()
+
+    beats_unfiltered = 0
+    for i in range(1,len(y_filtered)):
+        if y_filtered[i] > 0 and y_filtered[i-1] < 0 :
+            beats_unfiltered = beats_unfiltered + 1
+    print("BPM for unfiltered signal: ", beats_unfiltered * 3 )
+    # a ,b = hp.process(y_filtered, f, report_time=True)
+    # hp.plotter(a,b)
+    plt.show()
 
 
     y_filtered = sp.real(y_filtered)
-    y_filtered2 = sp.int16(y_filtered / sp.absolute(y_filtered).max() * 32767)
-    y_filtered3 = sp.int16(y_filtered)
+    y_filtered_int16_scaled = sp.int16(y_filtered / sp.absolute(y_filtered).max() * 32767)
+    y_filtered_int16 = sp.int16(y_filtered)
 
-    wavfile.write("filtered_signal_float.wav", f//2, y_filtered)
-    wavfile.write("filtered_signal_int16_scaled.wav", f//2, y_filtered2)
-    wavfile.write("filtered_signal_int16.wav", f//2, y_filtered3)
+    # wavfile.write("filtered_signal_float.wav", f//2, y_filtered)
+    wavfile.write("filtered_signal_int16_scaled.wav", f//2, y_filtered_int16_scaled)
+    wavfile.write("filtered_signal_int16.wav", f//2, y_filtered_int16)

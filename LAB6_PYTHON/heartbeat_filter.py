@@ -45,8 +45,8 @@ if __name__ == "__main__":
     # Bandpass
     # f_1 = 1.5
     # f_2 = 2.3
-    f_1 = 120
-    f_2 = 220
+    f_1 = 140
+    f_2 = 170
     deltaF1 = x_fft[-1] / N_fft
     deltaF2 = x_fft[-1] / N_fft
     f_1_index = int(f_1//deltaF1)
@@ -85,9 +85,9 @@ if __name__ == "__main__":
     for i in range(1,len(y_filtered)):
         if y_filtered[i] > 0 and y_filtered[i-1] < 0 :
             beats_unfiltered = beats_unfiltered + 1
-    print("BPM for unfiltered signal: ", beats_unfiltered * 3 )
-    # a ,b = hp.process(y_filtered, f, report_time=True)
-    # hp.plotter(a,b)
+    print("BPM for filtered signal: ", beats_unfiltered * 3 )
+    a ,b = hp.process(y_filtered, f, report_time=True)
+    hp.plotter(a,b)
     plt.show()
 
 

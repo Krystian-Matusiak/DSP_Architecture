@@ -45,20 +45,29 @@ if __name__ == "__main__":
     # Bandpass
     # f_1 = 1.5
     # f_2 = 2.3
-    f_1 = 120
-    f_2 = 220
-    deltaF1 = x_fft[-1] / N_fft
-    deltaF2 = x_fft[-1] / N_fft
-    f_1_index = int(f_1//deltaF1)
-    f_2_index = int(f_2//deltaF2)
-    y_fft[0:f_1_index] = 0
-    y_fft[f_2_index:-1] = 0
+    f_11 = 40
+    f_12 = 70
+    f_21 = 85
+    f_22 = 110
+    f_31 = 140
+    f_32 = 160
+    deltaF = x_fft[-1] / N_fft
+    f_11_index = int(f_11//deltaF)
+    f_12_index = int(f_12//deltaF)
+    f_21_index = int(f_21//deltaF)
+    f_22_index = int(f_22//deltaF)
+    f_31_index = int(f_31//deltaF)
+    f_32_index = int(f_32//deltaF)
+    y_fft[0:f_11_index] = 0
+    y_fft[f_12_index:f_21_index] = 0
+    y_fft[f_22_index:f_31_index] = 0
+    y_fft[f_32_index:-1] = 0
     y_fft[-1] = 0    
 
 
     # -----------------------------------------------------
     # Plot frequency-domain after filtration
-    plot_signal(x_fft, 2.0/N * np.abs(y_fft[:N_fft]),"Frequency [Hz]","Amplitude", "Frequency-domain heartbeat signal after filter")
+    plot_signal(x_fft, 20*np.log10(np.abs(y_fft[:N_fft])),"Frequency [Hz]","Amplitude", "Frequency-domain heartbeat signal after filter")
     # plt.show()
 
     y_filtered = ifft(y_fft,axis=0)
@@ -85,9 +94,9 @@ if __name__ == "__main__":
     for i in range(1,len(y_filtered)):
         if y_filtered[i] > 0 and y_filtered[i-1] < 0 :
             beats_unfiltered = beats_unfiltered + 1
-    print("BPM for unfiltered signal: ", beats_unfiltered * 3 )
-    # a ,b = hp.process(y_filtered, f, report_time=True)
-    # hp.plotter(a,b)
+    print("BPM for filtered signal: ", beats_unfiltered * 3 )
+    a ,b = hp.process(y_filtered, f, report_time=True)
+    hp.plotter(a,b)
     plt.show()
 
 

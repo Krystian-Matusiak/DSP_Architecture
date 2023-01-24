@@ -11,29 +11,24 @@ from sklearn.metrics import r2_score
 from tensorflow import keras
 import keras_tuner as kt
 
-# user define function
-def model_builder(hp):
-    
-    # first layer of the model
-    model = keras.Sequential([tf.keras.layers.InputLayer(input_shape=1,)])
-    # specifying the min and max nodes for hidden layer
-    hp_units = hp.Int('units', min_value=10, max_value=100)
-    model.add(keras.layers.Dense(units=hp_units, activation='relu'))
-    
-    # output layer
-    model.add(keras.layers.Dense(1))
-    #compiling the model
-    model.compile(optimizer=keras.optimizers.Adam(),
-                    loss=tf.keras.losses.mse,
-                    metrics=['mse'])
-    return model
 
 if __name__ == "__main__":
     # creating custom data/ x and y values
     X = np.arange(-210, 210, 3)
     a_exact = 3
     b_exact = 100
-    y = a_exact*X + b_exact
+    print(X.shape)
+    y = a_exact*X + b_exact + 400*np.random.rand(X.size)
+
+
+    # size of the plot
+    plt.figure(figsize=(12, 6))
+    plt.scatter(X, y, c="r", label="Exact model")
+    plt.grid()
+    plt.xlabel("X")
+    plt.ylabel("Y")
+    plt.legend()
+    plt.show()
 
 
     # Splitting training and test data
@@ -43,11 +38,22 @@ if __name__ == "__main__":
     y_test = y[110:]
 
 
+    # size of the plot
+    plt.figure(figsize=(12, 6))
+    plt.scatter(X_train, y_train, c="r", label="Train data")
+    plt.scatter(X_test, y_test, c="b", label="Test data")
+    plt.grid()
+    plt.xlabel("X")
+    plt.ylabel("Y")
+    plt.legend()
+    plt.show()
+
     # Model
     Histories = []
     LR = []
     LR_sgd = [0.01, 0.02]
-    LR_adam = [0.001, 0.005, 0.01, 0.05, 0.1]
+    LR_adam = [0.001, 0.005, 0.01, 0.05, 0.1, 0.5]
+    # LR_adam = [0.1]
     LR_set = LR_adam
     for lr in LR_set:
         model = tf.keras.Sequential([tf.keras.layers.InputLayer(input_shape=1,),
@@ -59,9 +65,9 @@ if __name__ == "__main__":
                     optimizer=tf.keras.optimizers.Adam(learning_rate=lr),
                     # optimizer=tf.keras.optimizers.SGD(learning_rate=lr),
                     #   optimizer=tf.keras.optimizers.SGD(),
-                    metrics=['mse'])
+                    metrics=['mae','mse','accuracy'])
 
-        history = model.fit(tf.expand_dims(X_train, axis=-1), y_train, epochs=300)
+        history = model.fit(tf.expand_dims(X_train, axis=-1), y_train, epochs=800)
         Histories.append(history)
         LR.append(lr)
         # preds = model.predict(X_test)
@@ -70,9 +76,9 @@ if __name__ == "__main__":
 
     # size of the plot
     plt.figure(figsize=(12, 6))
-    colors = ["r", "g", "b", "m", "k"]
+    colors = ["r", "g", "b", "m", "k", "c"]
     for ind,lr in enumerate(LR):
-        plt.plot(Histories[ind].history['mse'], c=colors[ind], label=f"Learning rage {str(lr)}")
+        plt.plot(Histories[ind].history['mae'], c=colors[ind], label=f"Learning rage {str(lr)}")
     # plt.plot(history.history['mse'])
     plt.title('Mean absolute error for different learning rates')
     plt.ylabel('MAE')
@@ -85,6 +91,7 @@ if __name__ == "__main__":
     b = float(model.layers[0].get_weights()[1])
 
     yp = a*X + b
+    preds = model.predict(X_test)
 
     print(f"a predicted = {a}")
     print(f"a_exact = {a_exact}")
@@ -93,11 +100,11 @@ if __name__ == "__main__":
 
     # size of the plot
     plt.figure(figsize=(12, 6))
-    # plt.scatter(X_train, y_train, c="b", label="Train data")
-    # plt.scatter(X_test, y_test, c="g", label="Test set")
-    # plt.scatter(X_test, preds, c="r", label="Predictions")
-    plt.plot(X, yp, c="b", label="Predicted model")
-    plt.plot(X, y, c="r", label="Exact model")
+    plt.scatter(X_train, y_train, c="b", label="Train data")
+    plt.scatter(X_test, y_test, c="g", label="Test set")
+    plt.scatter(X_test, preds, c="r", label="Predictions")
+    plt.plot(X, yp, c="k", label="Predicted model")
+    # plt.plot(X, y, c="k", label="Exact model")
     plt.grid()
     plt.legend()
     plt.show()

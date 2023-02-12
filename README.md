@@ -67,6 +67,11 @@ Then fast Fourier transform (FFT) had to be perfomed for those signals. The task
 ![Alt text](./README_IMG/FFT_ADC_1k.png "Title")
 ![Alt text](./README_IMG/FFT_ADC_10k.png "Title")
 
+ADC was also performed for simple ADC and through the DMA module. Moreover DMA helped to perform oversampling which resulted in better Effective number of bits (ENOB):
+
+![Alt text](./README_IMG/FFT_ADC_10k.png "Title") ![Alt text](./README_IMG/FFT_DMA_10k.png "Title")
+
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- ------------------------------------------------- -->

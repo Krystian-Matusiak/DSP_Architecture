@@ -1,10 +1,23 @@
 
 <!-- TABLE OF CONTENTS -->
+
+## Table of contents
+* [Digital Signal Processor (DSP) Architecture](#Digital Signal Processor (DSP) Architecture)
+* [Technology stack](#Technology stack)
+* [Laboratories 1 - warm-up](#Laboratories 1 - warm-up)
+* [Laboratories 2 - ADC](#Laboratories 2 - ADC)
+* [Laboratories 3 - DAC](#Laboratories DAC warm-up)
+* [Laboratories 4 - Modulations](#Laboratories 4 - Modulations)
+* [Laboratories 5 - Filters](#Laboratories 5 - warmFilters
+* [Laboratories 6 - Heartbeat signal processing](#Laboratories 6 - Heartbeat signal processing)
+* [Laboratories 7 - OpenCV face and cars' license plates detection](#Laboratories 7 - OpenCV face and cars' license plates detection)
+* [Laboratories 8 - Perceptron](#Laboratories 8 - Perceptron)
+
 <details>
   <summary>Table of Contents</summary>
   <ol>
     <li>
-      <a href="#dsp-architecture-classes">DSP Architecture classes</a>
+      <a href="#digital-signal-processor-(dsp)-architecture">Digital Signal Processor (DSP) Architecture</a>
       <ul>
         <li><a href="#technology-stack">Technology stack</a></li>
       </ul>

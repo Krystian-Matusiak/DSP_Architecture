@@ -19,13 +19,8 @@
     - [Face recognition](#face-recognition)
     - [Cars' license plates detection](#cars--license-plates-detection)
 - [Laboratories 8 - Perceptron](#Laboratories-8---Perceptron)
+- [Conclusions](#conclusions)
 
-
-### Face recognition
-
-
-### Cars' license plates detection
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- ------------------------------------------------- -->
 
@@ -135,7 +130,7 @@ In turn, in this case the only difference is that the frequency of carrier wave 
 
 ## Laboratories 5 - Filters
 
-During this task I had to implement IIR filter, and more precisely lowpass and bandpass filter. IIR filter is base on feedback - historical input and output are taking part in final result.
+During this task I had to implement Infinite Impulse Response (IIR) filter, and more precisely lowpass and bandpass filter. IIR filter is base on feedback - historical input and output are taking part in final result.
 
 <div align="center">
     <img src="./README_IMG/IIR-filter.png">
@@ -281,7 +276,7 @@ In this task there was a need to analyze the principle of operation of single pe
 to solve the problem of regression. Dataset have been initialized:
 
 <div align="center">
-    <img src="./README_IMG/train_test_data.png" width="50%">
+    <img src="./README_IMG/train_test_data.png" width="75%">
 </div>
 
 Then our perceptron has been implemented. It has one layer of one neuron
@@ -294,12 +289,12 @@ follows:
 
 
 <div align="center">
-    <img src="./README_IMG/LR_MAE_Adam.png" width="50%">
+    <img src="./README_IMG/LR_MAE_Adam.png" width="75%">
 </div>
 
 
 <div align="center">
-    <img src="./README_IMG/LR_MAE_SGD.png" width="50%">
+    <img src="./README_IMG/LR_MAE_SGD.png" width="75%">
 </div>
 
 We can notice that both algorithms work inversely – Adam needs higher learning
@@ -310,19 +305,19 @@ mean absolute error as a metric just to be able to compare those methods. For SG
 are not even interpretable because I’ve optained error of $10^{32}$. For Adam case the plot
 is as follows:
 <div align="center">
-    <img src="./README_IMG/LR_MSE_SGD.png" width="50%">
+    <img src="./README_IMG/LR_MSE_SGD.png" width="75%">
 </div>
 
 Adam optimizer seems to be the best choice for this kind of problem. Then I've checked the results with respect to the number of epochs:
 
 <div align="center">
-    <img src="./README_IMG/epochs_check.png" width="50%">
+    <img src="./README_IMG/epochs_check.png" width="75%">
 </div>
 
 As we can see for the best case (learning rate $lr=0.1$) 500 epochs are sufficient. The plot for the best case:
 
 <div align="center">
-    <img src="./README_IMG/MSE_ADAM_LR0_1.png" width="50%">
+    <img src="./README_IMG/MSE_ADAM_LR0_1.png" width="75%">
 </div>
 
 The weights of this neuron can be interpreted as a coefficients of linear function:
@@ -334,8 +329,35 @@ As we can see there is a huge difference for bias. Even if I provide additional
 learning rate and more epochs the difference for bias will be still visible. But If we provide lower noise we can get more accurate bias due to the fact that standard deviation will be lower.
 
 I also checked if it's possible to approximate square function
-    $$X = \begin{bmatrix} X^2 \\ X \\ 1 \end{bmatrix} $$
 
+$$ {\left\lbrack \matrix{X^2 \cr X \cr 1} \right\rbrack} $$
+
+The results are as follows:
+
+<div align="center">
+    <img src="./README_IMG/square_not_good.png" width="75%">
+</div>
+
+
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- ------------------------------------------------- -->
+
+
+
+
+
+## Conclusions
+
+During these classes I have obtained a large amount of knowledge of:
+
+*   Analog-Digital and Digital-Analog converter, how to read and gerenate signal, how to generate sine wave with various frequency, oversampling, ENOB estimating,
+*   AM & FM modulation, how to apply them,
+*   IIR/FIR filters, how to implement them, structure of lowpass and bandpass filter,
+*   Signal processing, heartbeat processing, signal separation, ECG methods (Pan-Tompkins algorithm),
+*   OpenCV methods, object detection, object recognition, possible image processing transformations,
+*   Structure of single perceptron, Adam and SGD optimizer, dependence of various parameters, "geometrical" interpretation of neuron weights.
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>

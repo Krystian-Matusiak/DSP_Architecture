@@ -50,13 +50,13 @@ The purpose of this classes was to get familiar with STM32CubeIDE and basics of 
 During these laboratories I had to measure the sine signal from external device - Analog Discovery 2 of Digilent. Those signal had to be generated with different frequency.
 
 <div align="center">
-    <img src="./README_IMG/ADC_1k.png" width=70%>
+    <img src="./README_IMG/ADC_1k.png" width="70%">
 </div>
 
 Then fast Fourier transform (FFT) had to be perfomed for those signals. The task was to observe the aliasing effect - when the signal's frequency is higher than the half of the sampling freqency
 
 <div align="center">
-    <img src="./README_IMG/FFT_ADC_1k.png" width=50%>
+    <img src="./README_IMG/FFT_ADC_1k.png" width="50%">
 </div>
 <div align="center">
     <img src="./README_IMG/FFT_ADC_10k.png" width="50%">
@@ -142,6 +142,14 @@ Lowpass filter has been implemented for frequency f=4kHz. The amplitude characte
 
 ### Bandpass filter
 
+This filter had to be implemented to work with $$f_{1} = 500Hz$$ and $$f_{2} = 2kHz$$:
+
+<div align="center">
+    <img src="./README_IMG/Bandpass.png">
+</div>
+<div align="center">
+    <img src="./README_IMG/Bandpass_right.png">
+</div>
 
 <!-- ------------------------------------------------- -->
 

@@ -14,6 +14,7 @@
     - [Lowpass filter](#lowpass-filter)
     - [Bandpass filter](#bandpass-filter)
 - [Laboratories 6 - Heartbeat signal processing](#Laboratories-6---Heartbeat-signal-processing)
+    - [Pan-Tompkins algorithm](#pan---tompkins-algorithm)
 - [Laboratories 7 - OpenCV face and cars' license plates detection](#laboratories-7---opencv-face-and-cars--license-plates-detection)
 - [Laboratories 8 - Perceptron](#Laboratories-8---Perceptron)
 
@@ -165,6 +166,26 @@ If we filter first, second and third harmonic we can obtain child heartbeat sign
 <div align="center">
     <img src="./README_IMG/BPM.png" width="90%">
 </div>
+
+### Pan-Tompkins algorithm
+
+To verify the results Pan-Tompkins algorithm has been implemented and applied. This algorithm is very common used in ECG. To perform such method there is a need to do the following steps:
+*   use bandpass filter
+*   perform derivative of the signal
+*   square the signal
+    <div align="center">
+        <img src="./README_IMG/squared.png" width="70%">
+    </div>
+*   apply moving window integrator
+    <div align="center">
+        <img src="./README_IMG/moving_average.png" width="70%">
+    </div>
+*   find peaks
+    <div align="center">
+        <img src="./README_IMG/find_peaks.png" width="70%">
+    </div>
+
+
 
 <!-- ------------------------------------------------- -->
 

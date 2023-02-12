@@ -216,12 +216,12 @@ During these tasks openCV has been used.
 
 To complete this task pretrained cascade classifier has been used - Haar feature-based cascade classifier:
 <div align="center">
-    <img src="./haarFace.png" width="65%">
+    <img src="./README_IMG/haarFace.png" width="65%">
 </div>
 
 The result of this classifier:
 <div align="center">
-    <img src="./faces.png" width="65%">
+    <img src="./README_IMG/faces.png" width="65%">
 </div>
 
 ### Cars' license plates detection
@@ -233,22 +233,22 @@ This task was a little bit more difficult. Several image processing methods have
 
 *   gray out:
     <div align="center">
-        <img src="./grayed.png" width="50%">
+        <img src="./README_IMG/grayed.png" width="50%">
     </div>
 
 *   blurring:
     <div align="center">
-        <img src="./blurred.png" width="50%">
+        <img src="./README_IMG/blurred.png" width="50%">
     </div>
 
 *   apply Canny edge detector
     <div align="center">
-        <img src="./canny.png" width="50%">
+        <img src="./README_IMG/canny.png" width="50%">
     </div>
 
 Thanks to those edges there is a possibility to find contours:
 <div align="center">
-    <img src="./all_edges.png" width="50%">
+    <img src="./README_IMG/all_edges.png" width="50%">
 </div>
 
 For now we need to find closed contour with the highest area:

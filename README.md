@@ -118,14 +118,14 @@ In turn, in this case the only difference is that the frequency of carrier wave 
 
 During this task I had to implement IIR filter, and more precisely lowpass and bandpass filter. IIR filter is base on feedback - historical input and output are taking part in final result.
 
-![Alt text](./README_IMG/IIR-filter.png)
+![Alt text](./README_IMG/IIR-filter.png){width="70%"}{:.centered}
 
 
 ### Lowpass filter
 
 Lowpass filter has been implemented for frequency f=4kHz. The amplitude characteristics are as follows:
 
-![Alt text](./README_IMG/lowpass.png){width="70%"}
+![Alt text](./README_IMG/lowpass.png)
 
 ![Alt text](./README_IMG/OUT_2k.png)
 ![Alt text](./README_IMG/OUT_4k.png)

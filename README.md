@@ -2,18 +2,18 @@
 <!-- TABLE OF CONTENTS -->
 
 ## Table of contents
-* [Digital Signal Processor (DSP) Architecture](#Digital Signal Processor (DSP) Architecture)
-* [Technology stack](#Technology stack)
-* [Laboratories 1 - warm-up](#Laboratories 1 - warm-up)
-* [Laboratories 2 - ADC](#Laboratories 2 - ADC)
-* [Laboratories 3 - DAC](#Laboratories DAC warm-up)
-* [Laboratories 4 - Modulations](#Laboratories 4 - Modulations)
-* [Laboratories 5 - Filters](#Laboratories 5 - warmFilters
-* [Laboratories 6 - Heartbeat signal processing](#Laboratories 6 - Heartbeat signal processing)
-* [Laboratories 7 - OpenCV face and cars' license plates detection](#Laboratories 7 - OpenCV face and cars' license plates detection)
-* [Laboratories 8 - Perceptron](#Laboratories 8 - Perceptron)
+* [Digital Signal Processor (DSP) Architecture](#Digital-Signal-Processor-(DSP)-Architecture)
+* [Technology stack](#Technology-stack)
+* [Laboratories 1 - warm-up](#Laboratories1-warm-up)
+* [Laboratories 2 - ADC](#Laboratories2-ADC)
+* [Laboratories 3 - DAC](#Laboratories3-DAC-warm-up)
+* [Laboratories 4 - Modulations](#Laboratories4-Modulations)
+* [Laboratories 5 - Filters](#Laboratories5-warmFilters)
+* [Laboratories 6 - Heartbeat signal processing](#Laboratories6-Heartbeat-signal-processing)
+* [Laboratories 7 - OpenCV face and cars' license plates detection](#Laboratories7-OpenCV-face-and-cars'-license-plates-detection)
+* [Laboratories 8 - Perceptron](#Laboratories8-Perceptron)
 
-<details>
+<!-- <details>
   <summary>Table of Contents</summary>
   <ol>
     <li>
@@ -31,7 +31,7 @@
     <li><a href="#laboratories-7-opencV-face-and-cars'-license-plates-detection">Laboratories 7 - OpenCV face and cars' license plates detection</a></li>
     <li><a href="#laboratories-8-perceptron">Laboratories 8 - Perceptron</a></li>
   </ol>
-</details>
+</details> -->
 
 
 <!-- ------------------------------------------------- -->

@@ -1,7 +1,12 @@
 
-<!-- TABLE OF CONTENTS -->
 <a name="readme-top"></a>
 
+
+# Introduction
+
+This repository contains all projects I took on my Master degree. The subject was digital signal processing and all methods that contribute to those operations.
+
+<!-- TABLE OF CONTENTS -->
 ## Table of contents
 - [Digital Signal Processor (DSP) Architecture](#Digital-Signal-Processor--DSP--Architecture)
     - [Technology stack](#Technology-stack)

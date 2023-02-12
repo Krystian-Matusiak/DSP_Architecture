@@ -2,16 +2,18 @@
 <!-- TABLE OF CONTENTS -->
 
 ## Table of contents
-* [Digital Signal Processor (DSP) Architecture](#Digital-Signal-Processor--DSP--Architecture)
-* [Technology stack](#Technology-stack)
-* [Laboratories 1 - warm-up](#Laboratories-1---warm---up)
-* [Laboratories 2 - ADC](#Laboratories-2---ADC)
-* [Laboratories 3 - DAC](#Laboratories-3---DAC)
-* [Laboratories 4 - Modulations](#Laboratories-4---Modulations)
-* [Laboratories 5 - Filters](#Laboratories-5---Filters)
-* [Laboratories 6 - Heartbeat signal processing](#Laboratories-6---Heartbeat-signal-processing)
-* [Laboratories 7 - OpenCV face and cars' license plates detection](#Laboratories-7---OpenCV-face-and-cars--license-plates-detection)
-* [Laboratories 8 - Perceptron](#Laboratories-8---Perceptron)
+- [Digital Signal Processor (DSP) Architecture](#Digital-Signal-Processor--DSP--Architecture)
+    * [Technology stack](#Technology-stack)
+- [Laboratories 1 - warm-up](#Laboratories-1---warm---up)
+- [Laboratories 2 - ADC](#Laboratories-2---ADC)
+- [Laboratories 3 - DAC](#Laboratories-3---DAC)
+- [Laboratories 4 - Modulations](#Laboratories-4---Modulations)
+    - [Amplitude modulation AM](#amplitude-modulation-am)
+    - [Frequency modulation FM](#frequency-modulation-fm)
+- [Laboratories 5 - Filters](#Laboratories-5---Filters)
+- [Laboratories 6 - Heartbeat signal processing](#Laboratories-6---Heartbeat-signal-processing)
+- [Laboratories 7 - OpenCV face and cars' license plates detection](#laboratories-7---opencv-face-and-cars--license-plates-detection)
+- [Laboratories 8 - Perceptron](#Laboratories-8---Perceptron)
 
 
 <!-- ------------------------------------------------- -->
@@ -33,15 +35,11 @@ During these classes the following tools have been used:
 *   TensorFlow
 
 
-
-
 <!-- ------------------------------------------------- -->
 
 ## Laboratories 1 - warm
 
 The purpose of this classes was to get familiar with STM32CubeIDE and basics of HAL. That's why I will skip the details 
-
-
 
 <!-- ------------------------------------------------- -->
 
@@ -98,9 +96,19 @@ For frequency f=10kHz:
 
 ## Laboratories 4 - Modulations
 
+The aim of these classes was to implement amplitude modulation (AM) and frequency modulation (FM). Both modulation were easy to implement thanks to the DDS algorithm from previous classes. The main idea is to provide carrier wave which is modulated according to modulating wave.
 
 
+### Amplitude modulation AM
 
+For this case amplitude of carrier wave changes according to the values of modulating signal:
+
+![Alt text](./README_IMG/FM_STFT.png)
+
+
+### Frequency modulation FM
+
+In turn, in this case the only difference is that the frequency of carrier wave will be changed;
 
 <!-- ------------------------------------------------- -->
 

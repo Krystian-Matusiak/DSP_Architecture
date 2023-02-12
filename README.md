@@ -142,7 +142,7 @@ Lowpass filter has been implemented for frequency f=4kHz. The amplitude characte
 
 ### Bandpass filter
 
-This filter had to be implemented to work with $$f_{1} = 500Hz$$ and $$f_{2} = 2kHz$$:
+This filter had to be implemented to work with $f_{1} = 500Hz$ and $f_{2} = 2kHz$:
 
 <div align="center">
     <img src="./README_IMG/Bandpass.png">
@@ -156,8 +156,15 @@ This filter had to be implemented to work with $$f_{1} = 500Hz$$ and $$f_{2} = 2
 ## Laboratories 6 - Heartbeat signal processing
 
 
+Input signal was a heartbeat signal of mother and her baby. The task was to fitler them and separate them. The FFT of this signal is as follows:
+<div align="center">
+    <img src="./README_IMG/Freq_unfiltered.png" width="70%">
+</div>
 
-
+If we filter first, second and third harmonic we can obtain child heartbeat signal. Butterworth bandpass filter has been used. I also applied heartpy lib which was responsible for determining heart rate. On the left side we can see filtered signal and on the right side there is unfiltered signal:
+<div align="center">
+    <img src="./README_IMG/BPM.png" width="90%">
+</div>
 
 <!-- ------------------------------------------------- -->
 

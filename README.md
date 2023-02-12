@@ -6,12 +6,12 @@
 * [Technology stack](#Technology-stack)
 * [Laboratories 1 - warm-up](#Laboratories-1---warm-up)
 * [Laboratories 2 - ADC](#Laboratories-2---ADC)
-* [Laboratories 3 - DAC](#Laboratories-3---DAC-warm-up)
+* [Laboratories 3 - DAC](#Laboratories-3---DAC)
 * [Laboratories 4 - Modulations](#Laboratories-4---Modulations)
-* [Laboratories 5 - Filters](#Laboratories-5---warmFilters)
+* [Laboratories 5 - Filters](#Laboratories-5---Filters)
 * [Laboratories 6 - Heartbeat signal processing](#Laboratories-6---Heartbeat-signal-processing)
 * [Laboratories 7 - OpenCV face and cars' license plates detection](#Laboratories-7---OpenCV-face-and-cars'-license-plates-detection)
-* [Laboratories 8 - Perceptron](##Laboratories-8---Perceptron)
+* [Laboratories 8 - Perceptron](#Laboratories-8---Perceptron)
 
 <!-- <details>
   <summary>Table of Contents</summary>

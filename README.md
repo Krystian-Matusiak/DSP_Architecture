@@ -118,7 +118,9 @@ In turn, in this case the only difference is that the frequency of carrier wave 
 
 During this task I had to implement IIR filter, and more precisely lowpass and bandpass filter. IIR filter is base on feedback - historical input and output are taking part in final result.
 
-![Alt text](./README_IMG/IIR-filter.png){width="70%"}{:.centered}
+<p align="center">
+    ![Alt text](./README_IMG/IIR-filter.png){width="70%"}
+</p>
 
 
 ### Lowpass filter

@@ -54,10 +54,10 @@ During these laboratories I had to measure the sine signal from external device 
 Then fast Fourier transform (FFT) had to be perfomed for those signals. The task was to observe the aliasing effect - when the signal's frequency is higher than the half of the sampling freqency
 
 <div align="center">
-    <img src="./README_IMG/FFT_ADC_1k.png">
+    <img src="./README_IMG/FFT_ADC_1k.png" width="70%">
 </div>
 <div align="center">
-    <img src="./README_IMG/FFT_ADC_10k.png">
+    <img src="./README_IMG/FFT_ADC_10k.png" width="70%">
 </div>
 
 ADC was also performed for simple ADC and through the DMA module. Moreover DMA helped to perform oversampling which resulted in better Effective number of bits (ENOB):
@@ -70,10 +70,10 @@ ADC was also performed for simple ADC and through the DMA module. Moreover DMA h
         </tr>
 	    <tr>
     	    <td>
-                <img src="./README_IMG/FFT_ADC_10k.png"  width=10% />
+                <img src="./README_IMG/FFT_ADC_10k.png" />
       	    </td>
             <td>
-                <img src="./README_IMG/FFT_DMA_10k.png"  width=10% /> 
+                <img src="./README_IMG/FFT_DMA_10k.png"  /> 
             </td>
         </tr>
     </table>

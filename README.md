@@ -49,7 +49,7 @@ During these classes the following tools have been used:
 
 <!-- ------------------------------------------------- -->
 
-## Laboratories 1 - warm
+## Laboratories 1 - warm-up
 
 The purpose of this classes was to get familiar with STM32CubeIDE and basics of HAL. That's why I will skip the details 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -228,7 +228,7 @@ The result of this classifier:
 
 This task was a little bit more difficult. Several image processing methods have to be performed. Original image:
 <div align="center">
-    <img src="./original.png" width="50%">
+    <img src="./README_IMG/original.png" width="50%">
 </div>
 
 *   gray out:
@@ -277,6 +277,64 @@ For now we need to find closed contour with the highest area:
 
 ## Laboratories 8 - Perceptron
 
+In this task there was a need to analyze the principle of operation of single perceptron. At first I had to implement 1-layer 1-neuron perceptron and use this model
+to solve the problem of regression. Dataset have been initialized:
+
+<div align="center">
+    <img src="./README_IMG/train_test_data.png" width="50%">
+</div>
+
+Then our perceptron has been implemented. It has one layer of one neuron
+because it is sufficient for training linear function. Then I trained model on training data
+for various parameters.
+Two cases have been compared, where the first one checks Adam optimizer and the
+second one SGD (Stochastic Gradient Descent) optimizer, both for mean absolute
+error. Those cases have been checked for different learning rates. The findings are as
+follows:
+
+
+<div align="center">
+    <img src="./README_IMG/LR_MAE_Adam.png" width="50%">
+</div>
+
+
+<div align="center">
+    <img src="./README_IMG/LR_MAE_SGD.png" width="50%">
+</div>
+
+We can notice that both algorithms work inversely – Adam needs higher learning
+rate to obtain better results while SGD seems to be destabilized for higher learning
+rate.
+I also checked both optimizers for mean square error as a loss function but I remain
+mean absolute error as a metric just to be able to compare those methods. For SGD the results
+are not even interpretable because I’ve optained error of $10^{32}$. For Adam case the plot
+is as follows:
+<div align="center">
+    <img src="./README_IMG/LR_MSE_SGD.png" width="50%">
+</div>
+
+Adam optimizer seems to be the best choice for this kind of problem. Then I've checked the results with respect to the number of epochs:
+
+<div align="center">
+    <img src="./README_IMG/epochs_check.png" width="50%">
+</div>
+
+As we can see for the best case (learning rate $lr=0.1$) 500 epochs are sufficient. The plot for the best case:
+
+<div align="center">
+    <img src="./README_IMG/MSE_ADAM_LR0_1.png" width="50%">
+</div>
+
+The weights of this neuron can be interpreted as a coefficients of linear function:
+$$ y_{exact}  = 3*X + 100$$
+
+$$ y_{pred}  = 2.98*X + 51.07$$
+
+As we can see there is a huge difference for bias. Even if I provide additional
+learning rate and more epochs the difference for bias will be still visible. But If we provide lower noise we can get more accurate bias due to the fact that standard deviation will be lower.
+
+I also checked if it's possible to approximate square function
+    $$X = \begin{bmatrix} X^2 \\ X \\ 1 \end{bmatrix} $$
 
 
 

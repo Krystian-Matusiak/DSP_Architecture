@@ -1,5 +1,6 @@
 
 <!-- TABLE OF CONTENTS -->
+<a name="readme-top"></a>
 
 ## Table of contents
 - [Digital Signal Processor (DSP) Architecture](#Digital-Signal-Processor--DSP--Architecture)
@@ -211,7 +212,7 @@ During these tasks openCV has been used.
 
 To complete this task pretrained cascade classifier has been used - Haar feature-based cascade classifier:
 <div align="center">
-    <img src="./README_IMG/haarFace.png" width="65%">
+    <img src="./README_IMG/haarFace.jpg" width="65%">
 </div>
 
 The result of this classifier:
@@ -305,7 +306,7 @@ mean absolute error as a metric just to be able to compare those methods. For SG
 are not even interpretable because I’ve optained error of $10^{32}$. For Adam case the plot
 is as follows:
 <div align="center">
-    <img src="./README_IMG/LR_MSE_SGD.png" width="75%">
+    <img src="./README_IMG/LR_MSE_Adam.png" width="75%">
 </div>
 
 Adam optimizer seems to be the best choice for this kind of problem. Then I've checked the results with respect to the number of epochs:
@@ -321,16 +322,17 @@ As we can see for the best case (learning rate $lr=0.1$) 500 epochs are sufficie
 </div>
 
 The weights of this neuron can be interpreted as a coefficients of linear function:
-$$ y_{exact}  = 3*X + 100$$
 
-$$ y_{pred}  = 2.98*X + 51.07$$
+$$ y_{exact} = 3*X + 100 $$
+
+$$ y_{pred} = 2.98*X + 51.07 $$
 
 As we can see there is a huge difference for bias. Even if I provide additional
 learning rate and more epochs the difference for bias will be still visible. But If we provide lower noise we can get more accurate bias due to the fact that standard deviation will be lower.
 
 I also checked if it's possible to approximate square function
 
-$$ {\left\lbrack \matrix{X^2 \cr X \cr 1} \right\rbrack} $$
+$$ X_{input} = {\left\lbrack \matrix{X^2 \cr X \cr 1} \right\rbrack} $$
 
 The results are as follows:
 

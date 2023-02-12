@@ -125,7 +125,7 @@ During this task I had to implement IIR filter, and more precisely lowpass and b
 
 Lowpass filter has been implemented for frequency f=4kHz. The amplitude characteristics are as follows:
 
-![Alt text](./README_IMG/lowpass.png | width="50%")
+![Alt text](./README_IMG/lowpass.png){width="70%"}
 
 ![Alt text](./README_IMG/OUT_2k.png)
 ![Alt text](./README_IMG/OUT_4k.png)

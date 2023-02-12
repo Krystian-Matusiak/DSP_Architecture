@@ -73,10 +73,10 @@ ADC was also performed for simple ADC and through the DMA module. Moreover DMA h
     <table>
 	    <tr>
     	    <td>
-                <img src="./README_IMG/FFT_ADC_10k.png" width="50%" />
+                <img src="./README_IMG/FFT_ADC_10k.png"  />
       	    </td>
             <td>
-                <img src="./README_IMG/FFT_DMA_10k.png" width="50%" /> 
+                <img src="./README_IMG/FFT_DMA_10k.png"  /> 
             </td>
         </tr>
     </table>

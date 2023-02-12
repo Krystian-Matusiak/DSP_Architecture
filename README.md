@@ -2,36 +2,16 @@
 <!-- TABLE OF CONTENTS -->
 
 ## Table of contents
-* [Digital Signal Processor (DSP) Architecture](#Digital-Signal-Processor-(DSP)-Architecture)
+* [Digital Signal Processor (DSP) Architecture](#Digital-Signal-Processor--DSP--Architecture)
 * [Technology stack](#Technology-stack)
-* [Laboratories 1 - warm-up](#Laboratories-1---warm-up)
+* [Laboratories 1 - warm-up](#Laboratories-1---warm---up)
 * [Laboratories 2 - ADC](#Laboratories-2---ADC)
 * [Laboratories 3 - DAC](#Laboratories-3---DAC)
 * [Laboratories 4 - Modulations](#Laboratories-4---Modulations)
 * [Laboratories 5 - Filters](#Laboratories-5---Filters)
 * [Laboratories 6 - Heartbeat signal processing](#Laboratories-6---Heartbeat-signal-processing)
-* [Laboratories 7 - OpenCV face and cars' license plates detection](#Laboratories-7---OpenCV-face-and-cars'-license-plates-detection)
+* [Laboratories 7 - OpenCV face and cars' license plates detection](#Laboratories-7---OpenCV-face-and-cars--license-plates-detection)
 * [Laboratories 8 - Perceptron](#Laboratories-8---Perceptron)
-
-<!-- <details>
-  <summary>Table of Contents</summary>
-  <ol>
-    <li>
-      <a href="#digital-signal-processor-(dsp)-architecture">Digital Signal Processor (DSP) Architecture</a>
-      <ul>
-        <li><a href="#technology-stack">Technology stack</a></li>
-      </ul>
-    </li>
-    <li><a href="#laboratories-1-warm-up">Laboratories 1 - warm-up</a></li>
-    <li><a href="#laboratories-2-adc">Laboratories 2 - ADC</a></li>
-    <li><a href="#laboratories-3-dac">Laboratories 3 - DAC</a></li>
-    <li><a href="#laboratories-4-modulations">Laboratories 4 - Modulations</a></li>
-    <li><a href="#laboratories-5-filters">Laboratories 5 - Filters</a></li>
-    <li><a href="#laboratories-6-hearbeat-signal-processing">Laboratories 6 - Heartbeat signal processing</a></li>
-    <li><a href="#laboratories-7-opencV-face-and-cars'-license-plates-detection">Laboratories 7 - OpenCV face and cars' license plates detection</a></li>
-    <li><a href="#laboratories-8-perceptron">Laboratories 8 - Perceptron</a></li>
-  </ol>
-</details> -->
 
 
 <!-- ------------------------------------------------- -->
@@ -41,7 +21,6 @@
 The aim of these classes was to obtain knowledge related to digital signal processing, algorithms permformed on STM32, some computer vision issues and introduction to neural networks.
 
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 ### Technology stack
@@ -54,7 +33,6 @@ During these classes the following tools have been used:
 *   TensorFlow
 
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 <!-- ------------------------------------------------- -->
@@ -64,7 +42,6 @@ During these classes the following tools have been used:
 The purpose of this classes was to get familiar with STM32CubeIDE and basics of HAL. That's why I will skip the details 
 
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- ------------------------------------------------- -->
 
@@ -99,7 +76,6 @@ ADC was also performed for simple ADC and through the DMA module. Moreover DMA h
     </table>
 </div>
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- ------------------------------------------------- -->
 
@@ -117,7 +93,6 @@ For frequency f=10kHz:
 ![Alt text](./README_IMG/TIME_10kHz.png)
 
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- ------------------------------------------------- -->
 
@@ -126,7 +101,6 @@ For frequency f=10kHz:
 
 
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- ------------------------------------------------- -->
 
@@ -135,7 +109,6 @@ For frequency f=10kHz:
 
 
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- ------------------------------------------------- -->
 
@@ -144,7 +117,6 @@ For frequency f=10kHz:
 
 
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- ------------------------------------------------- -->
 
@@ -153,7 +125,6 @@ For frequency f=10kHz:
 
 
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- ------------------------------------------------- -->
 
@@ -162,7 +133,6 @@ For frequency f=10kHz:
 
 
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- ------------------------------------------------- -->
 

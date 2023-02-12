@@ -48,7 +48,7 @@ During these classes the following tools have been used:
 
 ## Laboratories 1 - warm
 
-
+The purpose of this classes was to get familiar with STM32CubeIDE and basics of HAL. That's why I will skip the details 
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -57,7 +57,14 @@ During these classes the following tools have been used:
 
 ## Laboratories 2 - ADC
 
+During these laboratories I had to measure the sine signal from external device - Analog Discovery 2 of Digilent. Those signal had to be generated with different frequency.
 
+[![Product Name Screen Shot][README_IMG/ADC_1k.png]]
+
+Then fast Fourier transform (FFT) had to be perfomed for those signals. The task was to observe the aliasing effect - when the signal's frequency is higher than the half of the sampling freqency
+
+[![Product Name Screen Shot][README_IMG/FFT_ADC_1k.png]]
+[![Product Name Screen Shot][README_IMG/FFT_ADC_10k.png]]
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>

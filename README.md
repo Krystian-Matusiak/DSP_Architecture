@@ -60,6 +60,8 @@ The purpose of this classes was to get familiar with STM32CubeIDE and basics of 
 During these laboratories I had to measure the sine signal from external device - Analog Discovery 2 of Digilent. Those signal had to be generated with different frequency.
 
 [![Product Name Screen Shot][README_IMG/ADC_1k.png]]
+![Alt text](./README_IMG/ADC_1k.png "Title")
+![plot](./README_IMG/ADC_1k.png)
 
 Then fast Fourier transform (FFT) had to be perfomed for those signals. The task was to observe the aliasing effect - when the signal's frequency is higher than the half of the sampling freqency
 

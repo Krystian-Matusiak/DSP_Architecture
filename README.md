@@ -3,7 +3,7 @@
 
 ## Table of contents
 - [Digital Signal Processor (DSP) Architecture](#Digital-Signal-Processor--DSP--Architecture)
-    * [Technology stack](#Technology-stack)
+    - [Technology stack](#Technology-stack)
 - [Laboratories 1 - warm-up](#Laboratories-1---warm---up)
 - [Laboratories 2 - ADC](#Laboratories-2---ADC)
 - [Laboratories 3 - DAC](#Laboratories-3---DAC)
@@ -11,6 +11,8 @@
     - [Amplitude modulation AM](#amplitude-modulation-am)
     - [Frequency modulation FM](#frequency-modulation-fm)
 - [Laboratories 5 - Filters](#Laboratories-5---Filters)
+    - [Lowpass filter](#lowpass-filter)
+    - [Bandpass filter](#bandpass-filter)
 - [Laboratories 6 - Heartbeat signal processing](#Laboratories-6---Heartbeat-signal-processing)
 - [Laboratories 7 - OpenCV face and cars' license plates detection](#laboratories-7---opencv-face-and-cars--license-plates-detection)
 - [Laboratories 8 - Perceptron](#Laboratories-8---Perceptron)
@@ -114,8 +116,24 @@ In turn, in this case the only difference is that the frequency of carrier wave 
 
 ## Laboratories 5 - Filters
 
+During this task I had to implement IIR filter, and more precisely lowpass and bandpass filter. IIR filter is base on feedback - historical input and output are taking part in final result.
+
+![Alt text](./README_IMG/IIR-filter.png)
 
 
+### Lowpass filter
+
+Lowpass filter has been implemented for frequency f=4kHz. The amplitude characteristics are as follows:
+
+![Alt text](./README_IMG/ | width="50%")
+
+![Alt text](./README_IMG/OUT_2k.png)
+![Alt text](./README_IMG/OUT_4k.png)
+![Alt text](./README_IMG/OUT_6k.png)
+
+
+
+### Bandpass filter
 
 
 <!-- ------------------------------------------------- -->

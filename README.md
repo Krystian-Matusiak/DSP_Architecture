@@ -11,7 +11,7 @@
 * [Laboratories 5 - Filters](#Laboratories5-warmFilters)
 * [Laboratories 6 - Heartbeat signal processing](#Laboratories6-Heartbeat-signal-processing)
 * [Laboratories 7 - OpenCV face and cars' license plates detection](#Laboratories7-OpenCV-face-and-cars'-license-plates-detection)
-* [Laboratories 8 - Perceptron](#Laboratories8-Perceptron)
+* [Laboratories 8 - Perceptron](#Laboratories-8-Perceptron)
 
 <!-- <details>
   <summary>Table of Contents</summary>

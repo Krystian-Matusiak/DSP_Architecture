@@ -56,3 +56,4 @@ dkms.conf
 ./LAB2/DPS_LAB2_DMA/Debug/
 ./LAB2/venv/
 ./LAB2/.~lock.sines.ods*
+./.vscode

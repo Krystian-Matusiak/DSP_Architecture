@@ -71,8 +71,8 @@ ADC was also performed for simple ADC and through the DMA module. Moreover DMA h
 
 <!-- ![Alt text](./README_IMG/FFT_ADC_10k.png "Title") ![Alt text](./README_IMG/FFT_DMA_10k.png "Title") -->
 <p float="left">
-  <img src="./README_IMG/FFT_ADC_10k.png" width="100" />
-  <img src="./README_IMG/FFT_DMA_10k.png" width="100" /> 
+  <img src="./README_IMG/FFT_ADC_10k.png"  />
+  <img src="./README_IMG/FFT_DMA_10k.png"  /> 
 </p>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>

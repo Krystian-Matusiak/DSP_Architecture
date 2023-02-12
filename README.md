@@ -72,8 +72,8 @@ ADC was also performed for simple ADC and through the DMA module. Moreover DMA h
 <div id="image-table">
     <table>
         <tr>
-            <td>Simple ADc</td>
-            <td>ADC with DMA</td>
+            <td>Simple ADC</td>
+            <td>ADC with DMA and oversampling</td>
         </tr>
 	    <tr>
     	    <td>
@@ -92,7 +92,16 @@ ADC was also performed for simple ADC and through the DMA module. Moreover DMA h
 
 ## Laboratories 3 - DAC
 
+In this exercise there was a need to generate sine wave from look-up table (LUT).
 
+![Alt text](./README_IMG/1kHz.png)
+
+Moreover Direct digital synthesis (DDS) method has been implemented. Thanks to this it was possible to gneerate sine wave with any frequency (of course the higher frequency the more deformated sine wave is). For frequency f=1kHz:
+
+![Alt text](./README_IMG/TIME_1kHz.png)
+
+For frequency f=10kHz:
+![Alt text](./README_IMG/TIME_10kHz.png)
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>

@@ -15,9 +15,17 @@
     - [Bandpass filter](#bandpass-filter)
 - [Laboratories 6 - Heartbeat signal processing](#Laboratories-6---Heartbeat-signal-processing)
     - [Pan-Tompkins algorithm](#pan---tompkins-algorithm)
-- [Laboratories 7 - OpenCV face and cars' license plates detection](#laboratories-7---opencv-face-and-cars--license-plates-detection)
+- [Laboratories 7 - OpenCV](#laboratories-7---opencv)
+    - [Face recognition](#face-recognition)
+    - [Cars' license plates detection](#cars--license-plates-detection)
 - [Laboratories 8 - Perceptron](#Laboratories-8---Perceptron)
 
+
+### Face recognition
+
+
+### Cars' license plates detection
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- ------------------------------------------------- -->
 
@@ -37,12 +45,14 @@ During these classes the following tools have been used:
 *   OpenCV
 *   TensorFlow
 
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- ------------------------------------------------- -->
 
 ## Laboratories 1 - warm
 
 The purpose of this classes was to get familiar with STM32CubeIDE and basics of HAL. That's why I will skip the details 
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- ------------------------------------------------- -->
 
@@ -82,6 +92,7 @@ ADC was also performed for simple ADC and through the DMA module. Moreover DMA h
     </table>
 </div>
 
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- ------------------------------------------------- -->
 
@@ -99,6 +110,7 @@ For frequency f=10kHz:
 ![Alt text](./README_IMG/TIME_10kHz.png)
 
 
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- ------------------------------------------------- -->
 
@@ -117,6 +129,7 @@ For this case amplitude of carrier wave changes according to the values of modul
 ### Frequency modulation FM
 
 In turn, in this case the only difference is that the frequency of carrier wave will be changed;
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- ------------------------------------------------- -->
 
@@ -151,13 +164,14 @@ This filter had to be implemented to work with $f_{1} = 500Hz$ and $f_{2} = 2kHz
 <div align="center">
     <img src="./README_IMG/Bandpass_right.png">
 </div>
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- ------------------------------------------------- -->
 
 ## Laboratories 6 - Heartbeat signal processing
 
 
-Input signal was a heartbeat signal of mother and her baby. The task was to fitler them and separate them. The FFT of this signal is as follows:
+Input signal was a heartbeat signal of mother and her baby. The task was to fitler them and separate them (with the use of python). The FFT of this signal is as follows:
 <div align="center">
     <img src="./README_IMG/Freq_unfiltered.png" width="70%">
 </div>
@@ -174,26 +188,90 @@ To verify the results Pan-Tompkins algorithm has been implemented and applied. T
 *   perform derivative of the signal
 *   square the signal
     <div align="center">
-        <img src="./README_IMG/squared.png" width="70%">
+        <img src="./README_IMG/squared.png" width="50%">
     </div>
 *   apply moving window integrator
     <div align="center">
-        <img src="./README_IMG/moving_average.png" width="70%">
+        <img src="./README_IMG/moving_average.png" width="50%">
     </div>
 *   find peaks
     <div align="center">
-        <img src="./README_IMG/find_peaks.png" width="70%">
+        <img src="./README_IMG/find_peaks.png" width="50%">
     </div>
 
 
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- ------------------------------------------------- -->
 
-## Laboratories 7 - OpenCV face and cars' license plates detection
+## Laboratories 7 - OpenCV
+
+This exercise consist of 2 tasks - implement code for:
+*   face recognition
+*   cars' license plates detection
+
+During these tasks openCV has been used.
+
+### Face recognition
+
+To complete this task pretrained cascade classifier has been used - Haar feature-based cascade classifier:
+<div align="center">
+    <img src="./haarFace.png" width="65%">
+</div>
+
+The result of this classifier:
+<div align="center">
+    <img src="./faces.png" width="65%">
+</div>
+
+### Cars' license plates detection
+
+This task was a little bit more difficult. Several image processing methods have to be performed. Original image:
+<div align="center">
+    <img src="./original.png" width="50%">
+</div>
+
+*   gray out:
+    <div align="center">
+        <img src="./grayed.png" width="50%">
+    </div>
+
+*   blurring:
+    <div align="center">
+        <img src="./blurred.png" width="50%">
+    </div>
+
+*   apply Canny edge detector
+    <div align="center">
+        <img src="./canny.png" width="50%">
+    </div>
+
+Thanks to those edges there is a possibility to find contours:
+<div align="center">
+    <img src="./all_edges.png" width="50%">
+</div>
+
+For now we need to find closed contour with the highest area:
+
+<div id="image-table">
+    <table>
+	    <tr>
+    	    <td>
+                <img src="./README_IMG/plate_car1.png" />
+      	    </td>
+            <td>
+                <img src="./README_IMG/plate_car2.png"  /> 
+            </td>
+            <td>
+                <img src="./README_IMG/plate_car4.png"  /> 
+            </td>
+        </tr>
+    </table>
+</div>
 
 
 
-
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- ------------------------------------------------- -->
 
@@ -202,6 +280,7 @@ To verify the results Pan-Tompkins algorithm has been implemented and applied. T
 
 
 
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- ------------------------------------------------- -->
 

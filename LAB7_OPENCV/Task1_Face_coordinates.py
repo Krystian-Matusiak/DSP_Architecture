@@ -19,6 +19,7 @@ if __name__ == "__main__":
 
     while True:
         # Read the frame
+        # img = cv2.imread('./testAI.jpg', cv2.IMREAD_COLOR)
         _, img = cap.read()
         # Convert to grayscale
         gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
